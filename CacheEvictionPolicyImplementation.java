@@ -1,3 +1,5 @@
+
+import java.util.Map; 
 import java.util.HashMap; 
 
 class Node { 
@@ -61,6 +63,12 @@ abstract class CacheEvictionPolicy {
 							" for the key: " + key); 
 		return -1; 
 	} 
+	
+	public void StateOfCache(){
+	    for (Map.Entry<Integer, Node> entry : map.entrySet())  
+            System.out.print("Key = " + entry.getKey() + 
+                             ", Value = " + entry.getValue().value); 
+	}
 
 	// This method works in O(1) 
 	abstract void set(int key, int value);
@@ -135,41 +143,32 @@ public class TestCacheEvictionPolicy {
 		CacheEvictionPolicy mruCache = new MRUCache(2); 
 
 		mruCache.set(10, 10); 
-System.out.println("head next "+mruCache.head.next.value+"  Prev  "+mruCache.tail.pre.value);
-		
-		mruCache.set(20, 20); 
-      System.out.println("head next "+mruCache.head.next.value+"  Prev  "+mruCache.tail.pre.value);
-
-		
-
-		
-		mruCache.set(30, 30); 
-System.out.println("head next "+mruCache.head.next.value+"  Prev  "+mruCache.tail.pre.value);
-
-
-		mruCache.set(40, 40); 
-      System.out.println("head next "+mruCache.head.next.value+"  Prev  "+mruCache.tail.pre.value);
-
+		mruCache.StateOfCache();
+		System.out.println("\n");
+        mruCache.set(20, 20); 
+        mruCache.StateOfCache();
+        System.out.println("\n");
+        mruCache.set(30, 30); 
+        mruCache.StateOfCache();
+        System.out.println("\n");
+        mruCache.set(40, 40); 
+        mruCache.StateOfCache();
+      System.out.println("\n");
 
 System.out.println("Going to test the LRU "+ 
 						" Cache Implementation"); 
 		CacheEvictionPolicy lruCache = new LRUCache(2); 
 
 		lruCache.set(10, 10); 
-System.out.println("head next "+lruCache.head.next.value+"  Prev  "+lruCache.tail.pre.value);
-		
-		lruCache.set(20, 20); 
-      System.out.println("head next "+lruCache.head.next.value+"  Prev  "+lruCache.tail.pre.value);
-
-		
-
-		
-		lruCache.set(30, 30); 
-System.out.println("head next "+lruCache.head.next.value+"  Prev  "+lruCache.tail.pre.value);
-
-
-		lruCache.set(40, 40); 
-      System.out.println("head next "+lruCache.head.next.value+"  Prev  "+lruCache.tail.pre.value);
-
+		lruCache.StateOfCache();
+		System.out.println("\n");
+        lruCache.set(20, 20); 
+        lruCache.StateOfCache();
+        System.out.println("\n");
+      	lruCache.set(30, 30); 
+      	lruCache.StateOfCache();
+      	System.out.println("\n");
+        lruCache.set(40, 40); 
+        lruCache.StateOfCache();
 	} 
 } 
