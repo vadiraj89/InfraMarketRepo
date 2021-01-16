@@ -3,7 +3,6 @@ The Code Contains the Design and Testing of LRU and MRU Cache Implementaion in j
 The get and the set Methods are abstacted in each Cache System.
 
 The Cache are being tested by main class with the Key being same as that of value of ease of Developer.
-The key geneartion can be exteneded by using getKey Function for User Defined data caches.
 
 For LRU ,
 tail.prev is the least used value and hence will be Removed when the cache is Full.
