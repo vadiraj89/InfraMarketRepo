@@ -69,6 +69,10 @@ abstract class CacheEvictionPolicy {
             System.out.print("Key = " + entry.getKey() + 
                              ", Value = " + entry.getValue().value); 
 	}
+	
+	int getKeyforCache(int input){
+	    return input;
+	}
 
 	// This method works in O(1) 
 	abstract void set(int key, int value);
@@ -136,22 +140,24 @@ class LRUCache extends CacheEvictionPolicy {
     
 }
 public class TestCacheEvictionPolicy { 
+    
+    
 	public static void main(String[] args) 
 	{ 
 		System.out.println("Going to test the MRU "+ 
 						" Cache Implementation"); 
 		CacheEvictionPolicy mruCache = new MRUCache(2); 
 
-		mruCache.set(10, 10); 
+		mruCache.set(mruCache.getKeyforCache(10), 10); 
 		mruCache.StateOfCache();
 		System.out.println("\n");
-        mruCache.set(20, 20); 
+        mruCache.set(mruCache.getKeyforCache(20), 20); 
         mruCache.StateOfCache();
         System.out.println("\n");
-        mruCache.set(30, 30); 
+        mruCache.set(mruCache.getKeyforCache(30), 30); 
         mruCache.StateOfCache();
         System.out.println("\n");
-        mruCache.set(40, 40); 
+        mruCache.set(mruCache.getKeyforCache(40), 40); 
         mruCache.StateOfCache();
       System.out.println("\n");
 
@@ -159,16 +165,16 @@ System.out.println("Going to test the LRU "+
 						" Cache Implementation"); 
 		CacheEvictionPolicy lruCache = new LRUCache(2); 
 
-		lruCache.set(10, 10); 
+		lruCache.set(lruCache.getKeyforCache(10), 10); 
 		lruCache.StateOfCache();
 		System.out.println("\n");
-        lruCache.set(20, 20); 
+        lruCache.set(lruCache.getKeyforCache(20), 20); 
         lruCache.StateOfCache();
         System.out.println("\n");
-      	lruCache.set(30, 30); 
+      	lruCache.set(lruCache.getKeyforCache(30), 30); 
       	lruCache.StateOfCache();
       	System.out.println("\n");
-        lruCache.set(40, 40); 
+        lruCache.set(lruCache.getKeyforCache(40), 40); 
         lruCache.StateOfCache();
 	} 
 } 
